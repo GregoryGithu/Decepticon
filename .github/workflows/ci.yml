@@ -155,7 +155,7 @@ jobs:
         run: uv run pytest -n auto -q -m "not slow"
       - name: Pytest with coverage (main — enforces threshold)
         if: github.event_name == 'push'
-        run: uv run pytest -n auto --cov --cov-report=xml --cov-report=term --cov-fail-under=30
+        run: uv run pytest -n auto --cov --cov-report=xml --cov-report=term --cov-fail-under=50
       - name: Upload coverage artifact
         if: github.event_name == 'push' && always()
         uses: actions/upload-artifact@v4
@@ -232,7 +232,7 @@ jobs:
           output: trivy-${{ matrix.image }}.sarif
           severity: CRITICAL,HIGH
           ignore-unfixed: true
-          exit-code: "0"
+          exit-code: "1"
       - name: Upload Trivy SARIF
         if: always()
         uses: actions/upload-artifact@v4

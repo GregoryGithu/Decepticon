@@ -138,7 +138,7 @@ def analyze_oauth_callback(
                     f"Below the RFC 6819 recommended 128-bit equivalent.",
                 )
             )
-        if entropy < 2.5:
+        if entropy < 3.0:
             findings.append(
                 OAuthFinding(
                     id="oauth.state-low-entropy",

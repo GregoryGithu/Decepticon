@@ -124,6 +124,7 @@ class Neo4jStore:
         self._driver = GraphDatabase.driver(
             config.uri,
             auth=(config.user, config.password),
+            connection_timeout=60,
         )
         self._database = config.database
 

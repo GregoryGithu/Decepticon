@@ -116,6 +116,8 @@ class DecepticonSkillsMiddleware(SkillsMiddleware):
     """
 
     def __init__(self, *, backend, sources: list[str]) -> None:
+        if not sources:
+            raise ValueError("DecepticonSkillsMiddleware requires at least one skill source path")
         super().__init__(backend=backend, sources=sources)
         self.system_prompt_template = DECEPTICON_SKILLS_PROMPT
 
